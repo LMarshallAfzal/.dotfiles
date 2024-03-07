@@ -1,0 +1,12 @@
+# Show branch when in a git repository
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+# Color codes
+yellow=$(tput setaf 226) 
+cyan=$(tput setaf 51) 
+red=$(tput setaf 1) 
+white=$(tput setaf 231)
+
+export PS1="\[$yellow\]\u@\h \[$cyan\]\w \[$red\]\$(parse_git_branch)\[$white\]$ "

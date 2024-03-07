@@ -6,21 +6,17 @@ if [ -e $HOME/.aliases ]; then
     source $HOME/.aliases
 fi
 
+if [ -f ~/.bash_prompt ]; then
+    source ~/.bash_prompt
+fi
+
 test -s ~/.alias && . ~/.alias || true
 
 # Color codes
-yellow=$(tput setaf 226) 
-cyan=$(tput setaf 51) 
-red=$(tput setaf 1) 
 white=$(tput setaf 231) 
 blue=$(tput setaf 27)
 
 HISTTIMEFORMAT="$blue%Y-%m-%d $blue%H:%M:%S $white"
-
-# Show branch when in a git repository
-parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
 
 # Extract any type of compressed file
 ex() {
@@ -76,7 +72,5 @@ gitInit() {
 
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000000
-
-export PS1="\[$yellow\]\u@\h \[$cyan\]\w \[$red\]\$(parse_git_branch)\[$white\]$ "
 
 source ~/.aliases
