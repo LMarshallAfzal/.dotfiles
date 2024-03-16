@@ -25,8 +25,8 @@ set bell-style audible
 # end
 #
 
-"\e[A": history-search-backward # arrow up
-"\e[B": history-search-forward # arrow down
+"\e[A": history-search-backward
+"\e[B": history-search-forward
 "\e[C": forward-char
 "\e[D": backward-char
 
@@ -83,13 +83,11 @@ $endif
 
 $if Bash
     TAB:menu-complete
-    Space: magic-space
-    #history like zsh
+    Space:magic-space
     set match-hidden-files off
     set completion-ignore-case on
     set completion-map-case on
     set history-preserve-point on
-    #set mark-modified-lines on
     set visible-stats on
     set print-completions-horizontally on
     set show-all-if-ambiguous on
